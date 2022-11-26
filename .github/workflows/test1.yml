@@ -1,8 +1,6 @@
 name: hello-world
 on: push
 jobs:
-  my-job:
-
     testing1:
         runs-on: ubuntu-latest
         steps:
