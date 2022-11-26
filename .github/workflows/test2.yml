@@ -1,4 +1,4 @@
-name: hello-world
+name: working with git and docker
 on: push
 jobs:
   my-job:
