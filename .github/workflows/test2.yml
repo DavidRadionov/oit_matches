@@ -1,0 +1,10 @@
+name: hello-world
+on: push
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: git clone my repo
+        uses: actions/checkout@v1
+      - name: List current folder
+        run: ls -la
