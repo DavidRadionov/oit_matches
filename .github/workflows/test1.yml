@@ -2,15 +2,17 @@ name: hello-world
 on: push
 jobs:
   my-job:
-    runs-on: ubuntu-latest
+
     testing1:
-       steps:
-        - name: hello world
-          run: echo "Hello World!"
+        runs-on: ubuntu-latest
+        steps:
+          - name: hello world
+            run: echo "Hello World!"
     testing2:
-      needs: [testing1]
-      steps:
-        - name: hello oit
-          run:
-            export VAR=oit
-            echo "Здарова, это проект по $VAR"
+        runs-on: ubuntu-latest
+        needs: [testing1]
+        steps:
+          - name: hello oit
+            run:
+              export VAR=oit
+              echo "Здарова, это проект по $VAR"
