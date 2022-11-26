@@ -13,4 +13,4 @@ jobs:
         - name: hello oit
           run:
             export VAR=oit
-            echo "Здарова, это проект по" $VAR
+            echo "Здарова, это проект по $VAR"
