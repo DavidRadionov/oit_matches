@@ -12,7 +12,6 @@ jobs:
         runs-on: ubuntu-latest
         needs: [testing1]
         steps:
-          - name: hello oit
+          - name: hello with color
             run:
-              export VAR=oit
-              echo "Здарова, это проект по $VAR"
+             echo -e "\033[35mHello \033[34mworld \033[32mпривет \033[33mмир \033[31mи пока\033[0m"
