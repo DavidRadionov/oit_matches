@@ -30,6 +30,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest
+  code:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v4
+        width:
+          architecture: 'x64'
+      - name: Tests
+        run: python manage.py test
 #
 #  testCode:
 #    runs-on: ubuntu-latest
