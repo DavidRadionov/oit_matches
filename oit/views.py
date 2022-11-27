@@ -17,7 +17,7 @@ config = {
 }
 
 # Fetch the service account key JSON file contents
-cred = credentials.Certificate('C:/Users/Gleb/Downloads/oit-project-e7f75-firebase-adminsdk-s34rb-c5e70865cd.json')
+cred = credentials.Certificate('oit-project-e7f75-firebase-adminsdk-s34rb-c5e70865cd.json')
 
 # Initialize the app with a service account, granting admin privileges
 firebase_admin.initialize_app(cred, {
