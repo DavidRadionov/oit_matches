@@ -1,13 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<h1>Привет, {{ channel }}</h1>
-{% for value in list %}
-{{ value["Code"] }}
-{% endfor %}
-</body>
-</html>
+{%  extends 'oit_app/main.html' %}
+{% load static %}
+
+{% block content %}
+
+	<br>
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body" style="background-image: url({% static 'images/banner3.jpg' %});  background-size: 100% 300%;height: calc(100vh - 600px);">
+
+		</div>
+	</div>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+            <thead>
+				<tr>
+					<th>Дата встречи</th>
+					<th>Матч</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+					<th>Турнир</th>
+                    <th>Стадия</th>
+					<th>Сезон</th>
+                    <th>Результат</th>
+                    <th>Счёт</th>
+				</tr>
+              </thead>
+
+				{% for key, value in games.items%}
+				<tr>
+					<td>{{ value.Date }}</td>
+                    <td>{{ value.Team1 }}</td>
+                    <td><img src={{ value.Team1_Logo}} alt="" height=50 width=50></td>
+                    <td><img src={{ value.Team2_Logo}} alt="" height=50 width=50></td>
+                    <td>{{ value.Team2 }}</td>
+					<td>{{ value.Tournament }}</td>
+                    <td>{{ value.Round }}</td>
+					<td>{{ value.Season }}</td>
+
+                    <td>{{ value.Score }}</td>
+                    <td><a class="btn btn-link-dark" href="{% url 'game_analysis' value.Code %}">Посмотреть</a></td>
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
