@@ -34,19 +34,19 @@ jobs:
         run: pip install tox
       - name: Run tox
         run: tox -e py
-  testCode:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: [ "2.7", "3.7", "3.8", "3.9", "3.10" ]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-      - name: Test with pytest
-        run: |
-          pip install pytest
-          pip install pytest-cov
-          pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+#  testCode:
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        python-version: [ "2.7", "3.7", "3.8", "3.9", "3.10" ]
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Set up Python
+#        uses: actions/setup-python@v4
+#        with:
+#          python-version: '3.x'
+#      - name: Test with pytest
+#        run: |
+#          pip install pytest
+#          pip install pytest-cov
+#          pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
