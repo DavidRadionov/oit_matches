@@ -30,10 +30,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest
-      - name: Install tox and any other packages
-        run: pip install tox
-      - name: Run tox
-        run: tox -e py
+#
 #  testCode:
 #    runs-on: ubuntu-latest
 #    strategy:
