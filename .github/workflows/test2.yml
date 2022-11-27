@@ -35,23 +35,9 @@ jobs:
     steps:
       - uses: actions/setup-python@v4
         width:
+          python-version: '3.10'
           architecture: 'x64'
+      - name: Install requirements
+        run: pip install -r requirements.txt
       - name: Tests
         run: python manage.py test
-#
-#  testCode:
-#    runs-on: ubuntu-latest
-#    strategy:
-#      matrix:
-#        python-version: [ "2.7", "3.7", "3.8", "3.9", "3.10" ]
-#    steps:
-#      - uses: actions/checkout@v3
-#      - name: Set up Python
-#        uses: actions/setup-python@v4
-#        with:
-#          python-version: '3.x'
-#      - name: Test with pytest
-#        run: |
-#          pip install pytest
-#          pip install pytest-cov
-#          pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
