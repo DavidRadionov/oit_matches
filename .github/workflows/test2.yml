@@ -25,13 +25,10 @@ jobs:
         run: python -c "import sys; print(sys.version)"
       - name: Install dependencies
         run: python -m pip install --upgrade pip setuptools wheel
-      - name: Install dependencies
+      - name: Install dependencies and run Code tests
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest
-      - name: Install requirements
-        run: pip install -r requirements.txt
-      - name: Code tests
-        run: python manage.py test
+          python manage.py test
 
