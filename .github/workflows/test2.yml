@@ -34,7 +34,7 @@ jobs:
         run:
           python manage.py test
   build_and_pub:
-    needs: [ run_tests ]
+    needs: [ build ]
     runs-on: ubuntu-latest
     env:
       LOGIN: ${{ secrets.DOCKER_LOGIN }}
