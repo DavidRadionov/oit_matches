@@ -1,0 +1,268 @@
+
+
+.field {
+  top: 10vh;
+  left: 60%;
+  width: 31vw;
+  height: 90vh;
+  background-color:#77c66e;
+  background-size: 30%;
+  position: absolute;
+}
+.field .field__box {
+  width: 90%;
+  height: 90%;
+  border: solid 2px rgba(255, 255, 255, 0.8);
+  margin: 20px auto;
+  position: relative;
+}
+.field .field__box .field__line {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+}
+.field .field__box .field__line--goal--top {
+  width: 15%;
+  height: 5%;
+  border: solid 2px rgba(255, 255, 255, 0.8);
+  border-top: none;
+  left: 42.5%;
+}
+.field .field__box .field__line--goal--bottom {
+  bottom: 0;
+  width: 15%;
+  height: 5%;
+  border: solid 2px rgba(255, 255, 255, 0.8);
+  border-bottom: none;
+  margin: 0 42.5%;
+}
+.field .field__box .field__line--penalty--top {
+  width: 35%;
+  height: 10%;
+  border: solid 2px rgba(255, 255, 255, 0.8);
+  border-top: none;
+  margin: 0 32.5%;
+}
+.field .field__box .field__line--penalty--bottom {
+  bottom: 0;
+  width: 35%;
+  height: 10%;
+  border: solid 2px rgba(255, 255, 255, 0.8);
+  border-bottom: none;
+  margin: 0 32.5%;
+}
+.field .field__box .field__line--penalty--arc--top {
+  top: 0;
+  width: 25%;
+  height: 12%;
+  border-radius: 0 0 60% 60%;
+  border: solid 2px rgba(255, 255, 255, 0.8);
+  border-top: none;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  margin: 0 37.5%;
+}
+.field .field__box .field__line--penalty--arc--bottom {
+  bottom: 0;
+  width: 25%;
+  height: 12%;
+  border-radius: 60% 60% 0 0;
+  border: solid 2px rgba(255, 255, 255, 0.8);
+  border-bottom: none;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  margin: 0 37.5%;
+}
+.field .field__box .field__line--penalty--arc {
+  top: 0;
+  width: 25%;
+  height: 12%;
+  border-radius: 0 0 60% 60%;
+  border: solid 2px rgba(255, 255, 255, 0.8);
+  border-top: none;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  margin: 0 37.5%;
+}
+.field .field__box .field__line--mid {
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.field .field__box .field__line--circle {
+  top: 44%;
+  width: 17%;
+  height: 12%;
+  margin: auto;
+  border-radius: 70%;
+  border: solid 2px rgba(255, 255, 255, 0.8);
+  left: 41.5%;
+}
+.field .field__box .player {
+  position: absolute;
+}
+.field .field__box .player__item {
+  width: 9%;
+  height: 6%;
+  background: yellow;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #000000;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  cursor: move;
+  cursor: grab;
+}
+.field .field__box .player__item__frw{
+    width: 9%;
+  height: 6%;
+  background: royalblue;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #000000;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  cursor: move;
+  cursor: grab;
+}
+.field .field__box .player__item__cm{
+    width: 9%;
+  height: 6%;
+  background: limegreen;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #000000;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  cursor: move;
+  cursor: grab;
+}
+.field .field__box .player__item__gk{
+    width: 9%;
+  height: 6%;
+  background: coral;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #000000;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  cursor: move;
+  cursor: grab;
+}
+.field .field__box .player__item--shirt {
+  bottom: 25%;
+  font-size: 1em;
+  text-align: center;
+  color: coral;
+}
+.field .field__box .player__item--label {
+  margin-top: 20px;
+  font-size: 11px;
+  top: 75%;
+  position: absolute;
+  background-color: #00000050;
+  color: white;
+  border-radius: 10%;
+  padding: 5%;
+}
+.field .field__box .player__item--card {
+  position: absolute;
+  top: -380%;
+  background-color: #9c1737;
+  font-size: 0.7em;
+  color: #325082;
+  border-radius: 3%;
+  box-shadow: 0 0 30px #000000;
+  z-index: 2;
+  display: none;
+  flex-flow: column;
+}
+.field .field__box .player__item--card:after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-top: 10px solid #325082;
+  border-right: 10px solid transparent;
+}
+.field .field__box .player__item--card:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 40%;
+  background-color: #325082;
+  z-index: -1;
+}
+.field .field__box .player__item--card--name {
+  color: #9c1737;
+}
+.field .field__box .player__item--card--photo {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+.field .field__box .player__item--card--photo-bg {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+.field .field__box .player__item--card--info {
+  display: flex;
+}
+.field .field__box .player__item--card--info--column {
+  display: table;
+  padding: 2%;
+}
+.field .field__box .player__item--card--info--item {
+  tex-align: center;
+}
+.field .field__box .player__item--gk {
+  bottom: 1%;
+  left: 45%;
+}
+.field .field__box .player__item--two {
+  bottom: 25%;
+  right: 5%;
+}
+.field .field__box .player__item--three {
+  bottom: 15%;
+  right: 25%;
+}
+.field .field__box .player__item--four {
+  bottom: 15%;
+  left: 25%;
+}
+.field .field__box .player__item--five {
+  bottom: 42%;
+  right: 30%;
+}
+.field .field__box .player__item--six {
+  bottom: 25%;
+  left: 5%;
+}
+.field .field__box .player__item--seven {
+  bottom: 42%;
+  left: 30%;
+}
+.field .field__box .player__item--eight {
+  top: 30%;
+  left: 45%;
+}
+.field .field__box .player__item--nine {
+  top: 15%;
+  right: 5%;
+}
+.field .field__box .player__item--ten {
+  top: 15%;
+  left: 5%;
+}
+.field .field__box .player__item--eleven {
+  top: 8%;
+  left: 45%;
+}

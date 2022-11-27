@@ -1,0 +1,130 @@
+{%  extends 'oit_app/main.html' %}
+
+{% block content %}
+	<br>
+
+    <form action="" method="post">
+    {% csrf_token %}
+
+<div class="row">
+    <div class="col-2"  style="height: 100%; overflow-y: scroll; ">
+    <img src="{{home_logo.url}}" alt="" height=width width=100%>
+            <h6>{{ teams.0 }}</h6>
+
+     {% if teams.0 == 'Есперион' %}
+            <table class="table table-sm" style="border-left-style: solid;
+  border-left-color: orange;">
+         {% else  %}
+         <table class="table table-sm" style="border-left-style: solid;
+  border-left-color: royalblue; " >
+            {% endif %}
+              <thead class="thead-dark">
+				<tr>
+					<th>Игрок</th>
+				</tr>
+              </thead>
+                    {% for player in players1 %}
+					<tr class="table">
+						<td> <input type="submit" name="player_team1" value="{{ player }}" /></td>
+					</tr>
+                      {% endfor %}
+			</table>
+    </div>
+
+
+
+
+<div class="col-8">
+    <div class="row">
+        <div class="col-6">
+        <center>
+            <h6>Статистика матча:</h6>
+        </center>
+        <input type="submit" name="90min" value="Полный матч" style="width:100%; margin-top: 10px;" />
+        </div>
+
+        <div class="col-6">
+        <center>
+            <h6>Анализ игры:</h6>
+        </center>
+        <input type="submit" name="stats" value="Дополнительные сведения" style="width:100%; margin-top: 10px" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+            <input type="submit" name="first_half" value="Первый тайм" style="width:100%;  margin-top: 10px" />
+        </div>
+        <div class="col-3">
+            <input type="submit" name="second half" value="Второй тайм" style="width:100%; margin-top: 10px" />
+        </div>
+    </div>
+
+<br>
+<div class="row">
+<div class="col-6">
+    {% if chart1 %}
+        <img src="data:image/png;base64, {{ chart1|safe }}" style=" width:100%;"  alt="">
+    {% endif %}
+</div>
+<div class="col-6">
+        {% if chart2 %}
+            <img src="data:image/png;base64, {{ chart2|safe }}" style=" width: 100%;"  alt="">
+        {% endif %}
+</div>
+</div>
+
+<div class="row">
+<div class="col-6">
+            {% if chart3 %}
+                <img src="data:image/png;base64, {{ chart3|safe }}" style=" width: 100%;"  alt="">
+            {% endif %}
+</div>
+<div class="col-6">
+                {% if chart4 %}
+                    <img src="data:image/png;base64, {{ chart4|safe }}" style=" width: 100%;"  alt="">
+                {% endif %}
+</div>
+</div>
+<div class="row">
+<div class="col-6">
+    {% if chart5 %}
+        <img src="data:image/png;base64, {{ chart5|safe }}" style=" width: 100%;"  alt="">
+    {% endif %}
+</div>
+<div class="col-6">
+    {% if chart6 %}
+        <img src="data:image/png;base64, {{ chart6|safe }}" style=" width: 100%;"  alt="">
+    {% endif %}
+</div>
+</div>
+</div>
+
+<div class="col-2" style="height: 100%; overflow-y: scroll; direction:rtl;">
+<img src="{{away_logo.url}}" alt="" height=width width=100%>
+         <h6>{{ teams.1 }}</h6>
+         {% if teams.1 == 'Есперион' %}
+            <table class="table table-sm" style="border-right-style: solid;
+  border-right-color: orange;">
+         {% else  %}
+         <table class="table table-sm" style="border-right-style: solid;
+  border-right-color: royalblue; " >
+            {% endif %}
+              <thead class="thead-dark">
+				<tr>
+					<th>Игрок</th>
+				</tr>
+              </thead>
+                    {% for player in players2 %}
+					<tr class="table" >
+						<td align="right"> <input type="submit" name="player_team2" value="{{ player }}" /></td>
+					</tr>
+                      {% endfor %}
+             </table>
+        </div>
+    </div>
+    </form>
+
+<br>
+
+{% endblock %}
