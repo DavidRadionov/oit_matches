@@ -30,14 +30,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           pip install pytest
-  code:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-python@v4
-        width:
-          python-version: '3.10'
-          architecture: 'x64'
       - name: Install requirements
         run: pip install -r requirements.txt
       - name: Tests
         run: python manage.py test
+#  code:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/setup-python@v4
+#        width:
+#          python-version: '3.10'
+#          architecture: 'x64'
