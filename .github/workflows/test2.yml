@@ -8,8 +8,6 @@ jobs:
         uses: actions/checkout@v1
       - name: List current folder
         run: ls -la
-      - name: Test file project
-        run: run oit/views.py
   build:
     runs-on: ubuntu-latest
     strategy:
