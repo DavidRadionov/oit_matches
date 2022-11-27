@@ -28,9 +28,6 @@ firebase = pyrebase.initialize_app(config)
 database = firebase.database()
 authe = firebase.auth()
 
-# def index (response):
-#     return HttpResponse("Hello, world")
-
 def games(request):
     game_name = database.child('Data').child('Name').get().val()
     ref = db.reference("/Games/")
