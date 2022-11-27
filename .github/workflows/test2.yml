@@ -33,7 +33,7 @@ jobs:
       - name: Code tests
         run:
           python manage.py test
-  build_and_pub:
+  build_and_pub_DOCKER:
     needs: [ build ]
     runs-on: ubuntu-latest
     env:
@@ -43,7 +43,7 @@ jobs:
       - name: Login to docker
         run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
       - name: Build image
-        run: docker build -t $LOGIN/$NAME:${GITHUB_REF:11} -F Dockerfile .
+        run: docker build -t $LOGIN/$NAME:${GITHUB_REF:11} -f Dockerfile .
       - name: Push image to docker
         run: docker push $LOGIN/$NAME:${GITHUB_REF:11}
 
