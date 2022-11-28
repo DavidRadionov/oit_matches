@@ -1,0 +1,50 @@
+{%  extends 'oit_app/main.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+</head>
+
+<style>
+  .card {
+    box-shadow: 0 16px 48px #6a6a6b;
+  }
+</style>
+
+
+<div class="container">
+  <div class="row">
+    <!-- Blog Entries Column -->
+    <div class="col-md-7 mt-3 left">
+      {% for key, value in notes.items %}
+      <div class="card mb-4">
+        <div class="card-body">
+          <h2 class="card-title">{{ value.Title }}</h2>
+          <p class="card-text text-muted h6">{{ value.Author }} | {{ value.Date}} </p>
+          <p class="card-text">{{value.Content|slice:":200"}}</p>
+          <a href="{% url 'post_detail' value.Slug  %}" class="btn btn-light">Подробнее &rarr;</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  <div class="col-md-5">
+       <div class="card my-4">
+            <a class="btn btn-dark float-right"  href="{% url 'home' %}"> &#8592; Вернуться назад</a>
+            <script src=" {% static '/js/script.js' %}"></script>
+       </div>
+       <div class="site-heading">
+            <h3 class=" site-heading my-4 mt-3 text-black"> Заметки ✍️ </h3>
+       </div>
+
+  </div>
+</div>
+</div>
+{%endblock%}

@@ -38,7 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'oit.apps.OitAppConfig',
+    'graphene_django',
 ]
+
+GRAPHENE = {
+    'SCHEMA': 'oit.schema.schema' # Where your Graphene schema lives
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

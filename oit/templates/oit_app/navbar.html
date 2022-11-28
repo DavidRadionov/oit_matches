@@ -17,8 +17,17 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'home' %}">Состав</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'games' %}">Матчи</a>
+      </li>
+          <li class="nav-item">
+        <a class="nav-link" href="{% url 'notes' %}">Заметки</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'graphql' %}">GraphQL</a>
       </li>
     </ul>
   </div>

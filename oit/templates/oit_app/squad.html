@@ -1,0 +1,228 @@
+{%  extends 'oit_app/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<head>
+<link rel="stylesheet" type="text/css" href="{% static '/css/pitch.css' %}">
+</head>
+
+<br>
+<div class="row">
+	<div class="col-md-6">
+		<h5>Состав команды:</h5>
+		<hr>
+		<div class="col-xs-10" style="height: 100%; overflow-y: scroll;" >
+
+          <table class="table table-sm" style="border-left-style: solid;
+  border-left-color: coral;">
+            <h>Голкиперы</h>
+				{% for key, value in players.items %}
+                     {% if value.Position == 'ГК' %}
+					<tr class="table" >
+						<td style="width: 30%;"><a class="btn btn-link-dark" href="{% url 'player' value.Id  %}">Посмотреть</a></td>
+						<td style="width: 30%;">{{value.Name}}</td>
+						<td style="width: 7%;">#{{value.Number}}</td>
+                        <td style="width: 7%;">{{value.Position}}</td>
+                        <td style="width: 7%;">{{value.Age}}</td>
+                        <td style="width: 19%;">{{value.Leg}}</td>
+					</tr>
+                     {% endif %}
+				{% endfor %}
+			</table>
+
+
+			<table class="table table-sm" style="border-left-style: solid;
+  border-left-color: gold;">
+            <h>Защитники</h>
+				{% for key, value in players.items %}
+                     {% if value.Position == 'ПЦЗ' or value.Position == 'ЛЦЗ' or value.Position == 'ЛЗ' or value.Position == 'ПЗ'%}
+					<tr class="table">
+						<td style="width: 30%;"><a class="btn btn-link-dark" href="{% url 'games'  %}">Посмотреть</a></td>
+						<td style="width: 30%;">{{value.Name}}</td>
+						<td style="width: 7%;">#{{value.Number}}</td>
+                        <td style="width: 7%;">{{value.Position}}</td>
+                        <td style="width: 7%;">{{value.Age}}</td>
+                        <td style="width: 19%;">{{value.Leg}}</td>
+					</tr>
+                     {% endif %}
+				{% endfor %}
+			</table>
+
+       <table class="table table-sm" style="border-left-style: solid;
+  border-left-color: limegreen;">
+            <h>Полузащитники</h>
+				{% for key, value in players.items %}
+                     {% if value.Position == 'ЦП' or value.Position == 'ЦАП' or value.Position == 'ЦОП'  %}
+					<tr class="table">
+						<td style="width: 30%;"><a class="btn btn-link-dark" href="{% url 'games'  %}">Посмотреть</a></td>
+						<td style="width: 30%;">{{value.Name}}</td>
+						<td style="width: 7%;">#{{value.Number}}</td>
+                        <td style="width: 7%;">{{value.Position}}</td>
+                        <td style="width: 7%;">{{value.Age}}</td>
+                        <td style="width: 19%;">{{value.Leg}}</td>
+					</tr>
+                     {% endif %}
+				{% endfor %}
+			</table>
+
+
+           <table class="table table-sm" style="border-left-style: solid;
+  border-left-color: royalblue;">
+            <h>Нападающие</h>
+				{% for key, value in players.items %}
+                     {% if value.Position  == 'ЛВ' or value.Position  == 'ПВ' or value.Position  == 'ФРВ' %}
+					<tr class="table">
+						<td style="width: 30%;"><a class="btn btn-link-dark" href="{% url 'player' value.Id  %}">Посмотреть</a></td>
+						<td style="width: 30%;">{{value.Name}}</td>
+						<td style="width: 7%;">#{{value.Number}}</td>
+                        <td style="width: 7%;">{{value.Position}}</td>
+                        <td style="width: 7%;">{{value.Age}}</td>
+                        <td style="width: 19%;">{{value.Leg}}</td>
+					</tr>
+                     {% endif %}
+				{% endfor %}
+			</table>
+		</div>
+
+	</div>
+
+</div>
+
+<div class="field">
+  <div class="field__box">
+    <div class="field__line field__line--goal--top"></div>
+    <div class="field__line field__line--goal--bottom"></div>
+    <div class="field__line field__line--penalty--top"></div>
+    <div class="field__line field__line--penalty--bottom"></div>
+    <div class="field__line field__line--penalty--arc--top"></div>
+    <div class="field__line field__line--penalty--arc--bottom"></div>
+    <div class="field__line field__line--mid"></div>
+    <div class="field__line field__line--circle"></div>
+    <div class="arrow"></div>
+    <div class="player player__item__frw player__item--eleven">
+      <div class="player player__item--label">
+          {% for key, value in players.items %}
+               {% if value.Position == 'ФРВ' %}
+                      <nobr> {{ value.Name}}
+                   {{ value.Number }}
+                   </nobr>
+              {% endif %}
+          {% endfor %}
+      </div>
+    </div>
+    <div class="player player__item__frw player__item--ten">
+      <div class="player player__item--label">
+            {% for key, value in players.items %}
+               {% if customer.position == 'ЛВ' %}
+                       <nobr> {{ value.Name}}
+                   {{ value.Number }}
+                   </nobr>
+              {% endif %}
+          {% endfor %}
+      </div>
+    </div>
+    <div class="player player__item__frw player__item--nine">
+      <div class="player player__item--label">
+             {% for key, value in players.items %}
+               {% if customer.position == 'ПВ' %}
+                     <nobr> {{ value.Name}}
+                   {{ value.Number }}
+                   </nobr>
+              {% endif %}
+          {% endfor %}
+      </div>
+    </div>
+    <div class="player player__item__cm player__item--eight">
+      <div class="player player__item--label">
+            {% for key, value in players.items %}
+               {% if customer.position == 'ЦАП' %}
+                     <nobr> {{ value.Name}}
+                   {{ value.Number }}
+                   </nobr>
+              {% endif %}
+          {% endfor %}
+      </div>
+    </div>
+
+    <div class="player player__item__cm player__item--seven">
+      <div class="player player__item--label">
+           {% for key, value in players.items %}
+               {% if customer.position == 'ЦОП' %}
+                      <nobr> {{ value.Name}}
+                   {{ value.Number }}
+                   </nobr>
+              {% endif %}
+          {% endfor %}
+      </div>
+
+    </div>
+    <div class="player player__item player__item--six">
+      <div class="player player__item--label">
+           {% for key, value in players.items %}
+               {% if value.Position == 'ЛЗ' %}
+                     <nobr> {{ value.Name}}
+                   {{ value.Number }}
+                   </nobr>
+              {% endif %}
+          {% endfor %}
+      </div>
+
+    </div>
+    <div class="player player__item__cm player__item--five">
+      <div class="player player__item--label">
+            {% for key, value in players.items %}
+               {% if value.Position == 'ЦП' %}
+                     <nobr> {{ value.Name}}
+                   {{ value.Number }}
+                   </nobr>
+              {% endif %}
+          {% endfor %}
+      </div>
+      </div>
+    <div class="player player__item player__item--four">
+      <div class="player player__item--label">
+            {% for key, value in players.items %}
+               {% if value.Position == 'ЛЦЗ' %}
+                      <nobr> {{ value.Name}}
+                   {{ value.Number }}
+                   </nobr>
+              {% endif %}
+          {% endfor %}
+      </div>
+    </div>
+    <div class="player player__item player__item--three">
+      <div class="player player__item--label">
+             {% for key, value in players.items %}
+               {% if value.Position == 'ПЦЗ' %}
+                     <nobr> {{ value.Name}}
+                   {{ value.Number }}
+                   </nobr>
+              {% endif %}
+          {% endfor %}
+      </div>
+    </div>
+    <div class="player player__item player__item--two">
+      <div class="player player__item--label">
+             {% for key, value in players.items %}
+               {% if value.Position == 'ПЗ' %}
+                       <nobr> {{ value.Name}}
+                   {{ value.Number }}
+                   </nobr>
+              {% endif %}
+          {% endfor %}
+      </div>
+    </div>
+    <div class="player player__item__gk player__item--gk">
+      <div class="player player__item--label">
+       {% for key, value in players.items %}
+               {% if value.Position == 'ГК' %}
+                     <nobr> {{ value.Name}}
+                   {{ value.Number }}
+                   </nobr>
+              {% endif %}
+          {% endfor %}
+      </div>
+      </div>
+{% endblock %}
+</div></div>

@@ -37,9 +37,60 @@ def games(request):
     list = games.items()
 
     context = {
-        'games': games
+        'games': games,
     }
     return render(request, 'oit_app/games.html', context)
+
+
+def home(request):
+    ref = db.reference("/Players/")
+    players = ref.get()
+
+    context = {'players': players}
+
+    return render(request, 'oit_app/squad.html', context)
+
+
+def post(request):
+    # players = Customer.objects.all().order_by('number')
+    # posts = Post.objects.all().order_by('-created_on')
+
+    ref = db.reference("/Notes/")
+    ref1 = db.reference("/Players/")
+
+    notes = ref.get()
+    players = ref1.get()
+    print(notes)
+    return render(request, 'oit_app/notes.html', {'notes': notes, 'players': players})
+
+def player(request, player_id):
+
+    ref = db.reference("/Players/")
+    players = ref.get()
+    player=""
+
+    for key, value in players.items():
+        if value['Id'] == int(player_id):
+            player = value
+
+    context = {'player': player}
+    return render(request, 'oit_app/player.html', context)
+
+
+def full_post(request, slug):
+    # post = Post.objects.get(id=slug)
+
+    ref = db.reference("/Notes/")
+    notes = ref.get()
+    post = ""
+
+    for key, value in notes.items():
+        if value['Slug'] == slug:
+            post = value
+
+    print(post)
+    context = {'post': post}
+    return render(request, 'oit_app/post_detail.html', context)
 
 
 def game_analysis(request, game_code):
