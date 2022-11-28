@@ -1,10 +1,50 @@
 name: working-with-git-and-docker
 on: push
 jobs:
-  my-job:
+  test1:
     runs-on: ubuntu-latest
     steps:
       - name: git clone my repo
         uses: actions/checkout@v1
       - name: List current folder
         run: ls -la
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [ "2.7", "3.7", "3.8", "3.9", "3.10" ]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+      - name: Install dependencies
+        run: python -m pip install --upgrade pip setuptools wheel
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+      - name: Code tests
+        run:
+          python manage.py test
+  build_and_pub_DOCKER:
+    needs: [ build ]
+    runs-on: ubuntu-latest
+    env:
+      LOGIN: ${{ secrets.DOCKER_LOGIN }}
+      NAME: ${{ secrets.DOCKER_NAME }}
+    steps:
+      - name: Login to docker
+        run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
+      - uses: actions/checkout@v3
+      - name: Build image
+        run: docker build -t $LOGIN/$NAME:${GITHUB_REF:11} -f Dockerfile .
+      - name: Push image to docker
+        run: docker push $LOGIN/$NAME:${GITHUB_REF:11}
+
