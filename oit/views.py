@@ -1,10 +1,10 @@
 import firebase_admin
-from django.http import HttpResponse
-from django.shortcuts import render
 import pyrebase
+from django.shortcuts import render
 from firebase_admin import db, credentials
+
 from .analysis import pressure_map, get_players, get_teams, ball_receipt_map, shot_map, heatmap2, team_pressure, \
-    team_shots, xg, pass1, pass2, convex_hull, carry_map
+    team_shots, pass1, pass2, convex_hull, carry_map
 
 config = {
     "apiKey": "AIzaSyB-f4UqSWgTvJOQwN7_UPEqeJs9hdB7J-Y",
